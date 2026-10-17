@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharat News Punch | Latest News & Web Stories</title>
+<style>
+:root{--red:#d71920;--ink:#161616;--muted:#666;--paper:#f5f6f8;--line:#e7e7e7}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top{max-width:1180px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-size:25px;font-weight:900;letter-spacing:-.7px}.brand span{color:var(--red)}.tag{font-size:11px;color:#666;margin-top:4px;letter-spacing:1.3px}
+nav{display:flex;gap:8px;flex-wrap:wrap}button,.btn{border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer;background:var(--red);color:white}button.secondary{background:#f0f0f0;color:#222}button:hover{filter:brightness(.95)}
+.ticker{background:#151515;color:white;padding:10px 20px;font-size:13px}.ticker b{background:var(--red);padding:5px 9px;margin-right:10px}
+.wrap{max-width:1180px;margin:24px auto;padding:0 20px}.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.panel,.card,.editor{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.hero-feature{min-height:300px;position:relative;background:#222;color:white;display:flex;align-items:end}
+.hero-feature img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:.65}
+.hero-copy{position:relative;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,.9));width:100%}
+.pill{display:inline-block;background:var(--red);color:white;border-radius:4px;padding:5px 8px;font-size:11px;font-weight:bold;text-transform:uppercase}
+h1{font-size:clamp(26px,4vw,43px);margin:12px 0}.hero-copy p{line-height:1.6}
+.side{padding:18px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}.section-title h2{font-size:21px;margin:0}.story-row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}.story-row:last-child{border:0}.story-row img{width:86px;height:68px;object-fit:cover;border-radius:8px;background:#eee}.story-row h3{font-size:14px;line-height:1.35;margin:0 0 7px}.meta{font-size:11px;color:var(--muted)}
+.section{margin-top:28px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card img{width:100%;height:190px;object-fit:cover;background:#eee}.card-body{padding:16px}.card h3{font-size:19px;line-height:1.35;margin:10px 0}.card p{color:#555;line-height:1.55;font-size:14px}.read{color:var(--red);font-weight:bold;font-size:13px;cursor:pointer}
+.story-strip{display:flex;gap:14px;overflow:auto;padding:4px 0 12px}.story{min-width:155px;width:155px;height:245px;border-radius:14px;overflow:hidden;position:relative;background:#333;color:#fff;cursor:pointer}.story img{width:100%;height:100%;object-fit:cover;opacity:.75}.story strong{position:absolute;bottom:0;left:0;right:0;padding:15px 12px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-size:14px;line-height:1.35}
+.editor{padding:20px;margin-top:28px}.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}input,select,textarea{width:100%;border:1px solid #d8d8d8;border-radius:8px;padding:11px;font:inherit;background:#fff}textarea{min-height:120px;resize:vertical}.field{margin-bottom:14px}.full{grid-column:1/-1}.actions{display:flex;gap:10px;flex-wrap:wrap}.note{font-size:12px;color:#666;line-height:1.5}.empty{padding:24px;text-align:center;color:#777;background:white;border-radius:12px}
+footer{background:#151515;color:#ddd;padding:28px 20px;margin-top:40px;text-align:center;font-size:13px;line-height:1.7}
+.modal{position:fixed;inset:0;background:#000b;z-index:10;display:none;overflow:auto;padding:24px}.modal-box{max-width:780px;background:#fff;border-radius:14px;margin:20px auto;padding:24px}.modal-box img{width:100%;max-height:420px;object-fit:cover;border-radius:10px}.close{float:right;background:#222}.modal-content{line-height:1.8;white-space:pre-wrap}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column}.card img{height:150px}.editor-grid{grid-template-columns:1fr}.full{grid-column:auto}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.card img{height:200px}.wrap{padding:0 12px}.top{padding:13px 12px}.hero-feature{min-height:270px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div><div class="brand">BHARAT <span>NEWS PUNCH</span></div><div class="tag">NEWS • STORIES • PEOPLE</div></div><nav><button class="secondary" onclick="go('home')">Home</button><button class="secondary" onclick="filterNews('India')">India</button><button class="secondary" onclick="filterNews('World')">World</button><button class="secondary" onclick="go('webstories')">Web Stories</button><button onclick="go('publish')">＋ Publish News</button></nav></div></header>
+<div class="ticker"><b>BREAKING</b><span id="tickerText">Bharat News Punch — aapki khabar, aapki awaaz.</span></div>
+<main class="wrap" id="home">
+<section class="hero"><div class="panel hero-feature" id="heroFeature"><div class="hero-copy"><span class="pill">Welcome</span><h1>Bharat News Punch</h1><p>Desh, duniya aur aapke aas-paas ki khabrein — ek hi jagah.</p><button onclick="go('publish')">Publish Your First Story</button></div></div>
+<div class="panel side"><div class="section-title"><h2>Latest Updates</h2><span class="pill">Latest</span></div><div id="latestList"><div class="empty">Abhi koi news publish nahi hui hai. Neeche Publish News se apni pehli khabar add karein.</div></div></div></section>
+<section class="section" id="webstories"><div class="section-title"><h2>Web Stories</h2><span class="meta">Tap a story to read</span></div><div class="story-strip" id="storyStrip"><div class="empty">Aapki web stories yahan dikhengi.</div></div></section>
+<section class="section"><div class="section-title"><h2 id="newsHeading">Latest News & Articles</h2><button class="secondary" onclick="renderNews(items)">Show All</button></div><div class="grid" id="newsGrid"><div class="empty">News aur articles yahan dikhengi.</div></div></section>
+<section class="editor" id="publish"><div class="section-title"><h2>Publish News / Article / Web Story</h2><span class="pill">Admin Editor</span></div>
+<p class="note">Form bharein, photo upload karein aur Publish dabayein. Is demo mein content isi browser/device par save hota hai.</p>
+<form id="newsForm"><div class="editor-grid">
+<div class="field"><label for="title">Headline / Title *</label><input id="title" required placeholder="Khabar ka title Hindi ya English mein"></div>
+<div class="field"><label for="category">Category *</label><select id="category"><option>India</option><option>World</option><option>Politics</option><option>Business</option><option>Sports</option><option>Entertainment</option><option>Technology</option><option>Education</option><option>Viral</option></select></div>
+<div class="field"><label for="type">Content Type *</label><select id="type"><option value="Article">News Article</option><option value="Web Story">Web Story</option><option value="Breaking News">Breaking News</option></select></div>
+<div class="field"><label for="author">Author / Reporter</label><input id="author" placeholder="Reporter name"></div>
+<div class="field full"><label for="photo">Upload Main Photo</label><input id="photo" type="file" accept="image/*"><div class="note">JPG, PNG, WebP supported. Photo is saved locally in this demo.</div><img id="preview" style="display:none;max-width:220px;max-height:140px;object-fit:cover;margin-top:10px;border-radius:8px" alt="Photo preview"></div>
+<div class="field full"><label for="summary">Short Description / Summary</label><textarea id="summary" placeholder="Khabar ka chhota sa saar..."></textarea></div>
+<div class="field full"><label for="body">Full Article / Story Text *</label><textarea id="body" required style="min-height:180px" placeholder="Yahan poori khabar likhein. Hindi mein likh sakte hain."></textarea></div>
+</div><div class="actions"><button type="submit">Publish Now</button><button type="button" class="secondary" onclick="document.getElementById('newsForm').reset();clearPreview()">Clear Form</button></div><p id="formMsg" class="note" aria-live="polite"></p></form>
+</section></main>
+<footer><strong>BHARAT NEWS PUNCH</strong><br>Har khabar par nazar. Har awaaz ko jagah.<br><span class="note">Demo website • Publish only verified news. Respect photo copyrights and correct errors promptly.</span></footer>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box"><button class="close" onclick="closeModal()">Close ✕</button><div id="modalBody"></div></div></div>
+<script>
+const KEY='bharatNewsPunchItemsV1'; let items=[]; let photoData='';
+try{items=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){items=[]}
+const $=id=>document.getElementById(id);
+function go(id){$(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function safe(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function dateText(d){return new Date(d).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}
+function renderNews(list){const grid=$('newsGrid'); if(!list.length){grid.innerHTML='<div class="empty">Abhi koi news nahi hai. Publish News form se add karein.</div>';return}
+grid.innerHTML=list.map(n=>`<article class="card">${n.photo?`<img src="${n.photo}" alt="${safe(n.title)}">`:`<div style="height:190px;background:#f0f0f0;display:grid;place-items:center;color:#999">BHARAT NEWS PUNCH</div>`}<div class="card-body"><span class="pill">${safe(n.category)}</span> <span class="meta">${safe(n.type)} · ${dateText(n.date)}</span><h3>${safe(n.title)}</h3><p>${safe(n.summary||n.body.slice(0,140))}</p><span class="read" onclick="openItem('${n.id}')">READ FULL STORY →</span></div></article>`).join('')}
+function render(){renderNews(items);let latest=items.slice(0,4);$('latestList').innerHTML=latest.length?latest.map(n=>`<div class="story-row">${n.photo?`<img src="${n.photo}" alt="">`:`<div style="width:86px;height:68px;background:#eee;border-radius:8px"></div>`}<div><h3><span class="read" onclick="openItem('${n.id}')">${safe(n.title)}</span></h3><div class="meta">${safe(n.category)} · ${dateText(n.date)}</div></div></div>`).join(''):'<div class="empty">Abhi koi news publish nahi hui hai.</div>';
+let hero=items[0]; if(hero){$('heroFeature').innerHTML=`${hero.photo?`<img src="${hero.photo}" alt="">`:''}<div class="hero-copy"><span class="pill">${safe(hero.category)}</span><h1>${safe(hero.title)}</h1><p>${safe(hero.summary||hero.body.slice(0,150))}</p><button onclick="openItem('${hero.id}')">Read Full Story</button></div>`}
+let stories=items.filter(n=>n.type==='Web Story');$('storyStrip').innerHTML=stories.length?stories.map(n=>`<div class="story" onclick="openItem('${n.id}')">${n.photo?`<img src="${n.photo}" alt="">`:''}<strong>${safe(n.title)}</strong></div>`).join(''):'<div class="empty">Aapki web stories yahan dikhengi.</div>';
+$('tickerText').textContent=hero?hero.title:'Bharat News Punch — aapki khabar, aapki awaaz.'}
+function filterNews(cat){$('newsHeading').textContent=cat+' News';renderNews(items.filter(n=>n.category===cat));go('newsHeading')}
+function openItem(id){let n=items.find(x=>x.id===id);if(!n)return;$('modalBody').innerHTML=`<span class="pill">${safe(n.category)}</span><h1>${safe(n.title)}</h1><p class="meta">${safe(n.type)} · ${dateText(n.date)} · ${safe(n.author||'Bharat News Punch')}</p>${n.photo?`<img src="${n.photo}" alt="${safe(n.title)}">`:''}<p>${safe(n.summary)}</p><div class="modal-content">${safe(n.body)}</div>`;$('modal').style.display='block'}
+function closeModal(){$('modal').style.display='none'}
+function clearPreview(){$('preview').style.display='none';$('preview').src='';photoData=''}
+$('photo').addEventListener('change',e=>{const f=e.target.files[0];if(!f){clearPreview();return}if(f.size>2*1024*1024){alert('Demo mein 2 MB se chhoti photo choose karein.');e.target.value='';return}const r=new FileReader();r.onload=()=>{photoData=r.result;$('preview').src=photoData;$('preview').style.display='block'};r.readAsDataURL(f)});
+$('newsForm').addEventListener('submit',e=>{e.preventDefault();const n={id:Date.now().toString(),title:$('title').value.trim(),category:$('category').value,type:$('type').value,author:$('author').value.trim(),photo:photoData,summary:$('summary').value.trim(),body:$('body').value.trim(),date:new Date().toISOString()};items.unshift(n);try{localStorage.setItem(KEY,JSON.stringify(items));$('formMsg').textContent='Published successfully! Aapki news website par dikh rahi hai.'}catch(err){items.shift();$('formMsg').textContent='Storage full ho sakta hai. Chhoti photo use karein ya purani entries clear karein.';return}e.target.reset();clearPreview();render();go('home')});
+render();
+</script></body></html>
